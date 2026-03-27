@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:15
+    container_name: authlytixs_db
+    environment:
+      POSTGRES_DB: authlytixs
+      POSTGRES_USER: authlytixs_user
+      POSTGRES_PASSWORD: authlytixs_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: authlytixs_redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
+
